@@ -4,6 +4,7 @@ import 'bulma/css/bulma.css';
 
 import Title from './components/Title.jsx'
 import SearchForm from './components/SearchForm.jsx'
+import MovieList from './components/MovieList.jsx'
 
 class App extends Component {
 
@@ -15,15 +16,6 @@ class App extends Component {
     this.setState({
       results
     })
-  }
-
-  _renderResults () {
-    const { results } = this.state
-    return results.map(movie => (
-      <p key={movie.imdbID}>
-        {movie.Title}
-      </p>
-    ))
   }
 
   render() {
@@ -38,7 +30,7 @@ class App extends Component {
         {
           this.state.results.length === 0 ?
           <p>Sin resultados</p> :
-          this._renderResults()
+          <MovieList movies={this.state.results}/>
         }
       </div>
     );
