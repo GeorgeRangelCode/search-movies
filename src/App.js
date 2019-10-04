@@ -5,6 +5,7 @@ import 'bulma/css/bulma.css';
 
 import Home from './pages/Home.jsx'
 import Detail from './pages/Detail.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/detail/:movieId" component={Detail} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     );
