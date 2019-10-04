@@ -3,13 +3,17 @@ import './App.css';
 import 'bulma/css/bulma.css';
 
 import Title from './components/Title.jsx'
+import SearchForm from './components/SearchForm.jsx'
 
 function App() {
   return (
     <div className="App">
       <Title>
-        dhgdgd
+        Search Movies
       </Title>
+      <div className="SearchForm-wrapper">
+        <SearchForm />
+      </div>
     </div>
   );
 }
