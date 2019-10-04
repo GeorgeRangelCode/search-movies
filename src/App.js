@@ -1,46 +1,19 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import 'bulma/css/bulma.css';
 
-import Title from './components/Title.jsx'
-import SearchForm from './components/SearchForm.jsx'
-import MovieList from './components/MovieList.jsx'
+import Home from './pages/Home.jsx'
+import Detail from './pages/Detail.jsx'
 
 class App extends Component {
-
-  state = {
-    usedSearh: false,
-    results: []
-  }
-
-  _handleResults = (results) => {
-    this.setState({
-      results, usedSearh: true
-    })
-  }
-
-  _renderResults () {
-    return ( 
-      this.state.results.length === 0 ?
-      <p>Sorry! Results not found!</p> :
-      <MovieList movies={this.state.results}/>
-    )
-  }
-
   render() {
     return (
       <div className="App">
-        <Title>
-          Search Movies
-        </Title>
-        <div className="SearchForm-wrapper">
-          <SearchForm onResults={this._handleResults} />
-        </div>
-        {
-          this.state.usedSearh
-          ? this._renderResults()
-          : <small>Use the form to search movie</small>
-        }
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/detail/:movieId" component={Detail} />
+        </Switch>
       </div>
     );
   }
