@@ -16,10 +16,10 @@ class SearchForm extends Component {
   _handleSubmit = (event) => {
     event.preventDefault()
     const { inputValue } = this.state
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputValue}`)
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${inputValue}`)
       .then((response) => response.json())
       .then((results) => {
-        const { Search, totalResults } = results
+        const { Search = [], totalResults = "0"} = results
         console.log({ Search, totalResults })
         this.props.onResults(Search)
       })

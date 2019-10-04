@@ -9,13 +9,22 @@ import MovieList from './components/MovieList.jsx'
 class App extends Component {
 
   state = {
+    usedSearh: false,
     results: []
   }
 
   _handleResults = (results) => {
     this.setState({
-      results
+      results, usedSearh: true
     })
+  }
+
+  _renderResults () {
+    return ( 
+      this.state.results.length === 0 ?
+      <p>Sorry! Results not found!</p> :
+      <MovieList movies={this.state.results}/>
+    )
   }
 
   render() {
@@ -28,9 +37,9 @@ class App extends Component {
           <SearchForm onResults={this._handleResults} />
         </div>
         {
-          this.state.results.length === 0 ?
-          <p>Sin resultados</p> :
-          <MovieList movies={this.state.results}/>
+          this.state.usedSearh
+          ? this._renderResults()
+          : <small>Use the form to search movie</small>
         }
       </div>
     );
